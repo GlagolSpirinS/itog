@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Должности</title>
+  <style>
+    /* Стили для таблицы (по желанию) */
+  </style>
+</head>
+<body>
+<h1>Список должностей</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Название должности</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="position : ${positions}">
+    <td th:text="${position.id}"></td>
+    <td th:text="${position.name}"></td>
+  </tr>
+  </tbody>
+</table>
+<a href="/positions/new">Добавить должность</a>
+</body>
+</html>

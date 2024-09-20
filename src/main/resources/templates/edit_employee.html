@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактировать Сотрудника</title>
+  <link rel="stylesheet" href="style.css"> </head>
+<body>
+<h1>Редактировать Сотрудника</h1>
+<form th:action="@{/employees/{id}(id=${employee.id})}" th:object="${employee}" method="post">
+  <input type="hidden" th:field="*{id}">
+
+  <label for="firstName">Имя:</label>
+  <input type="text" th:field="*{firstName}" id="firstName">
+
+  <label for="lastName">Фамилия:</label>
+  <input type="text" th:field="*{lastName}" id="lastName">
+
+  <label for="email">Email:</label>
+  <input type="email" th:field="*{email}" id="email">
+
+  <label for="position">Должность:</label>
+  <select th:field="*{position}" id="position">
+    <option th:each="position : ${positions}" th:value="${position.id}" th:text="${position.name}"></option>
+  </select>
+
+  <label for="department">Отдел:</label>
+  <select th:field="*{department}" id="department">
+    <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}"></option>
+  </select>
+
+  <button type="submit">Сохранить</button>
+</form>
+
+<a href="/employees">Назад к списку сотрудников</a>
+</body>
+</html>

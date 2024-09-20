@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Новая должность</title>
+  <style>
+    /* Стили для формы (по желанию) */
+  </style>
+</head>
+<body>
+<h1>Добавление новой должности</h1>
+<form th:action="@{/positions/new}" th:object="${position}" method="post">
+  <label for="name">Название должности:</label>
+  <input type="text" th:field="*{name}" id="name">
+  <br>
+  <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

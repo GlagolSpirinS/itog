@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Новый сотрудник</title>
+  <style>
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Новый сотрудник</h1>
+<form th:action="@{/employees}" th:object="${employee}" method="post">
+  <label for="firstName">Имя:</label>
+  <input type="text" th:field="*{firstName}" id="firstName" placeholder="Введите имя">
+
+  <label for="lastName">Фамилия:</label>
+  <input type="text" th:field="*{lastName}" id="lastName" placeholder="Введите фамилию">
+
+  <label for="email">Email:</label>
+  <input type="email" th:field="*{email}" id="email" placeholder="Введите email">
+
+  <label for="position">Должность:</label>
+  <select th:field="*{position}" id="position">
+    <option th:each="position : ${positions}"
+            th:value="${position.id}"
+            th:text="${position.name}"></option>
+  </select>
+
+  <label for="department">Отдел:</label>
+  <select th:field="*{department}" id="department">
+    <option th:each="department : ${departments}"
+            th:value="${department.id}"
+            th:text="${department.name}"></option>
+  </select>
+
+  <button type="submit">Сохранить</button>
+</form>
+<a href="/employees">Назад к списку</a>
+</body>
+</html>
